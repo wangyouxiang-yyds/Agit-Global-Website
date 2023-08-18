@@ -1,0 +1,56 @@
+{% extends "base.html"%}
+{% block content %}
+<!-- 表單填寫處 -->
+<form name="approval form" action="." method="POST">
+    {% csrf_token %}
+    <div class="row g-2">
+        <div class="col-md">
+            <div class="form-floating">
+               名字
+{#                    <input type="text" class="form-control" id="uesr_name">#}
+                {{ form.user_name }}
+            </div>
+        </div>
+        <div class="col-md">
+        <div class="form-floating">
+                {{ form.user_department }}
+                <label for="{{ form.user_department.id_for_label }}">部門</label>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.user_email.id_for_label }}" class="form-label">電子信箱</label>
+        <input type="email" class="form-control" id="{{ form.user_email.id_for_label }}" name="{{ form.user_email.name }}" placeholder="輸入電子信箱">
+        <div class="form-text">We'll never share your email with anyone else.</div>
+
+    </div>
+    <hr class="border border-dark border-2 opacity-75">
+    <div class="form-group">
+    <label for="{{ form.user_application_event.id_for_label }}">申請類別</label>
+    {% for choice_value, choice_label in form.user_application_event.field.choices %}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="{{ form.user_application_event.name }}" value="{{ choice_value }}" id="_{{ forloop.counter }}">
+            <label class="form-check-label" for="_{{ forloop.counter }}">
+                {{ choice_label }}
+            </label>
+        </div>
+    {% endfor %}
+    </div>
+
+    <br/><br/><br/>
+    <div class="form-group">
+        <label for="{{ form.user_message.id_for_label }}">申請原因(詳細描述)</label>
+        <textarea class="form-control" id="{{ form.user_message.id_for_label }}" name="{{ form.user_message.name }}" rows="3"></textarea>
+    </div>
+
+    <br/><br/> <br/>
+    <button type="submit" class="btn btn-primary">送出</button>
+</form>
+<!-- 表單填寫處 -->
+
+    {% if message %}
+    	<div class="alert alert-warning">{{ message }}</div>
+    {% endif %}
+
+{% endblock %}
+
