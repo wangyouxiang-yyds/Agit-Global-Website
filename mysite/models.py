@@ -4,15 +4,33 @@ python manage.py createsuperuser
 
 '''
 
-
 from django.db import models
 
+
 # Create your models here.
-class about_table(models.Model):
-    about_banner = models.ImageField(upload_to='about_banner', max_length=255) # about的banner圖
-    content_photo = models.ImageField(upload_to='content_photo', max_length=255) # about的banner圖
-    content_small_title = models.CharField(max_length=200, null=False)
-    content_big_title = models.CharField(max_length=200, null=False)
-    create_date  = models.DateField(auto_now_add=True) # 創建時間
-class about_manager_photo(models.Model):
-    manger_photo = models.ImageField(upload_to='manger_photo', max_length=255)
+
+class article_category(models.Model):  # 文章類別
+    article_category = models.CharField(max_length=10, null=False)
+    def __str__(self):
+        return self.article_category
+
+class article(models.Model):  # 文章
+    title = models.CharField(max_length=50, null=False)  # 標題
+    small_title = models.CharField(max_length=100, null=False)  # 小標題
+    content = models.TextField(blank=True)  # 內文
+    author_name = models.CharField(max_length=10, null=False)  # 作者
+    article_category = models.ForeignKey(article_category, on_delete=models.CASCADE)  # foreign key
+    modify_date = models.DateTimeField(auto_now=True)   # 修改時間
+    create_date = models.DateField(auto_now_add=True)   # 新增時間
+    article_photo = models.ImageField(upload_to='article_photo', max_length=255)
+
+# class article_photo(models.Model): # 圖片
+#     url = models.ForeignKey(article, on_delete=models.CASCADE)
+
+
+class author(models.Model):
+    name = models.ForeignKey(article, on_delete=models.CASCADE)
+    department = models.CharField(max_length=10, null=False)
+    position = models.CharField(max_length=10, null=False)
+
+
