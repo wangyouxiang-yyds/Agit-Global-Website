@@ -48,11 +48,43 @@ def approval_view(request):
 
 
 def index(request):
+    return render(request, 'index.html', locals())
 
-    return render(request, 'agitweb/index.html', locals())
 
 
 
 def about(request):
 
     return render(request, 'about.html', locals())
+
+
+def pricing(request):
+
+    return render(request, 'pricing.html', locals())
+
+
+
+def service(request):
+
+    return render(request, 'service.html', locals())
+
+def project(request):
+
+    return render(request, 'project.html', locals())
+
+def blog_grid(request):
+
+    return render(request, 'blog-grid.html', locals())
+
+def blog_sidebar(request):
+
+    return render(request, 'blog-sidebar.html', locals())
+
+def blog_single(request):
+
+    return render(request, 'blog-single.html', locals())
+
+
+def contact(request):
+
+    return render(request, 'contact.html', locals())

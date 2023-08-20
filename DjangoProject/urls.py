@@ -21,11 +21,19 @@ from mysite import views
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-    path('', views.index),
-    path('index/', views.index),
-    path('about/', views.about),
+    path('', views.index, name='index'),
+    path('index/', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('contact/', views.approval_view),
+    path('about/', views.about, name='about'),  # 關於頁面
+    path('pricing/', views.pricing, name='pricing'),  # 價錢諮詢
+    path('service/', views.service, name='service'),  #
+    path('project/', views.project, name='project'),  # project
+    path('blog_grid/', views.blog_grid, name='blog_grid'),  #
+    path('blog_sidebar/', views.blog_sidebar, name='blog_sidebar'),  #
+    path('blog_single/', views.blog_single, name='blog_single'),  #
+    path('contact/', views.contact, name='contact'),  #
+
+
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

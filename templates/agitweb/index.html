@@ -1,135 +1,6 @@
-{#{% extends 'base.html' %}#}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-
-<html lang="zh-Hant">
-<head>
-
-  <!-- ** Basic Page Needs ** -->
-  <meta charset="utf-8">
-  <title>AGIT | GLOBAL</title>
-
-  <!-- ** Mobile Specific Metas ** -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Agency HTML Template">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="author" content="Themefisher">
-  <meta name="generator" content="Themefisher Html5 Agency Template v1.0">
-  
-  <!-- theme meta -->
-  <meta name="theme-name" content="megakit" />
-
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="{% static '/agitweb/plugins/bootstrap/bootstrap.min.css'%}">
-  <!-- Icon Font Css -->
-  <link rel="stylesheet" href="{% static '/agitweb/plugins/themify/css/themify-icons.css'%}">
-  <link rel="stylesheet" href="{% static '/agitweb/plugins/fontawesome/css/all.min.css'%}">
-  <link rel="stylesheet" href="{% static '/agitweb/plugins/magnific-popup/magnific-popup.css'%}">
-  <!-- Owl Carousel CSS -->
-  <link rel="stylesheet" href="{% static '/agitweb/plugins/slick/slick.css'%}">
-  <link rel="stylesheet" href="{% static '/agitweb/plugins/slick/slick-theme.css'%}">
-
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="{% static '/agitweb/css/style.css'%}">
-
-  <!--Favicon網頁icon-->
-  <link rel="icon" href="{% static '/agitweb/images/favicon.png'%}" type="image/x-icon">
-
-</head>
-
-<body>
-
-<!-- Header Start -->
-<header class="navigation">
-  <div class="header-top ">
-    <div class="container">
-      <div class="row justify-content-between align-items-center">
-        <div class="col-lg-2 col-md-4">
-          <div class="header-top-socials text-center text-lg-left text-md-left">
-            <a href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-10 col-md-8 text-center text-lg-right text-md-right">
-          <div class="header-top-info mb-2 mb-md-0">
-            <a href="tel:049-2563888">聯絡我們 : <span>049-2563888</span></a>
-            <a href="mailto:ex20@agit-global.com"><i class="fas fa-envelope mr-2"></i><span>ex20@agit-global.com</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="navbar">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <nav class="navbar navbar-expand-lg px-0 py-4">
-            <a class="navbar-brand" href="index.html">
-              AGIT GLOBAL<span>   Inc.</span>
-            </a>
-      
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09"
-              aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="fa fa-bars"></span>
-            </button>
-      
-            <div class="collapse navbar-collapse text-center" id="navbarsExample09">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">首頁</a>
-                </li>
-                <li class="nav-item dropdown @@about">
-                  <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About <i class="fas fa-chevron-down small"></i></a>
-                  <ul class="dropdown-menu" aria-labelledby="dropdown03">
-                    <li><a class="dropdown-item @@company" href="about.html">Our company</a></li>
-                    <li><a class="dropdown-item @@pricing" href="pricing.html">Pricing</a></li>
-                    
-                    <li class="dropdown dropdown-submenu dropright">
-                      <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
-            
-                      <ul class="dropdown-menu" aria-labelledby="dropdown0301">
-                        <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                        <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item @@service"><a class="nav-link" href="service.html">Services</a></li>
-                <li class="nav-item @@project"><a class="nav-link" href="project.html">Portfolio</a></li>
-                <li class="nav-item dropdown @@blog">
-                  <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="fas fa-chevron-down small"></i></a>
-                  <ul class="dropdown-menu" aria-labelledby="dropdown05">
-                    <li><a class="dropdown-item @@blogGrid" href="blog-grid.html">Blog Grid</a></li>
-                    <li><a class="dropdown-item @@blogSidebar" href="blog-sidebar.html">Blog with Sidebar</a></li>
-                    <li><a class="dropdown-item @@blogSingle" href="blog-single.html">Blog Single</a></li>
-      
-                    <li class="dropdown dropdown-submenu dropleft">
-                      <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0501" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
-            
-                      <ul class="dropdown-menu" aria-labelledby="dropdown0501">
-                        <li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
-                        <li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item @@contact"><a class="nav-link" href="contact.html">Contact</a></li>
-              </ul>
-      
-              <div class="my-2 my-md-0 ml-lg-4 text-center">
-                <a href="contact.html" class="btn btn-solid-border btn-round-full">Get a Quote</a>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-<!-- Header Close -->
-
+{% block Slider_Start %}
 <!-- Slider Start -->
 <section class="slider">
 	<div class="container">
@@ -144,8 +15,10 @@
 		</div>
 	</div>
 </section>
-<!-- Section Intro Start -->
 
+{% endblock %}
+
+{% block Section_Intro_Start %}
 <section class="section intro">
 	<div class="container">
 		<div class="row ">
@@ -182,9 +55,9 @@
 		</div>
 	</div>
 </section>
+{% endblock %}
 
-<!-- Section Intro END -->
-<!-- Section About Start -->
+{% block Section_About_Start %}
 
 <section class="section about position-relative">
 	<div class="bg-about"></div>
@@ -206,9 +79,11 @@
 		</div>
 	</div>
 </section>
+{% endblock %}
 
-<!-- Section About End -->
-<!-- section Counter Start -->
+{% block Counter %}
+
+
 <section class="section counter">
 	<div class="container">
 		<div class="row">
@@ -239,8 +114,11 @@
 		</div>
 	</div>
 </section>
-<!-- section Counter End  -->
+{% endblock %}
+
 <!--  Section Services Start -->
+{% block service %}
+
 <section class="section service border-top">
 	<div class="container">
 		<div class="row justify-content-center">
@@ -303,9 +181,10 @@
 		</div>
 	</div>
 </section>
-<!--  Section Services End -->
+{% endblock %}
 
 <!-- Section Cta Start -->
+{% block Cta %}
 <section class="section cta">
 	<div class="container">
 		<div class="row">
@@ -320,78 +199,13 @@
 		</div>
 	</div>
 </section>
+{% endblock %}
 <!--  Section Cta End-->
-<!-- Section Testimonial Start -->
-<section class="section testimonial">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-7 ">
-				<div class="section-title">
-					<span class="h6 text-color">Clients testimonial</span>
-					<h2 class="mt-3 content-title">Check what's our clients say about us</h2>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<div class="container">
-		<div class="row testimonial-wrap">
-			<div class="testimonial-item position-relative">
-				<i class="ti-quote-left text-color"></i>
-
-				<div class="testimonial-item-content">
-					<p class="testimonial-text">Quam maiores perspiciatis temporibus odio reiciendis error alias debitis atque
-						consequuntur natus iusto recusandae numquam corrupti facilis blanditiis.</p>
-
-					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">Thomas Johnson</h5>
-						<p>Excutive Director,themefisher</p>
-					</div>
-				</div>
-			</div>
-			<div class="testimonial-item position-relative">
-				<i class="ti-quote-left text-color"></i>
-
-				<div class="testimonial-item-content">
-					<p class="testimonial-text">Consectetur adipisicing elit. Quam maiores perspiciatis temporibus odio reiciendis
-						error alias debitis atque consequuntur natus iusto recusandae .</p>
-
-					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">Mickel hussy</h5>
-						<p>Excutive Director,themefisher</p>
-					</div>
-				</div>
-			</div>
-			<div class="testimonial-item position-relative">
-				<i class="ti-quote-left text-color"></i>
-
-				<div class="testimonial-item-content">
-					<p class="testimonial-text">Quam maiores perspiciatis temporibus odio reiciendis error alias debitis atque
-						consequuntur natus iusto recusandae numquam corrupti.</p>
-
-					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">James Watson</h5>
-						<p>Excutive Director,themefisher</p>
-					</div>
-				</div>
-			</div>
-			<div class="testimonial-item position-relative">
-				<i class="ti-quote-left text-color"></i>
-
-				<div class="testimonial-item-content">
-					<p class="testimonial-text">Consectetur adipisicing elit. Quam maiores perspiciatis temporibus odio reiciendis
-						error alias debitis atque consequuntur natus iusto recusandae .</p>
-
-					<div class="testimonial-author">
-						<h5 class="mb-0 text-capitalize">Mickel hussy</h5>
-						<p>Excutive Director,themefisher</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 <!-- Section Testimonial End -->
+{% block Testimonial %}
+
+
 <section class="section latest-blog bg-2">
 	<div class="container">
 		<div class="row justify-content-center">
@@ -461,120 +275,4 @@
 		</div>
 	</div>
 </section>
-
-<section class="mt-70 position-relative">
-	<div class="container">
-		<div class="cta-block-2 bg-gray p-5 rounded border-1">
-			<div class="row justify-content-center align-items-center ">
-				<div class="col-lg-7">
-					<span class="text-color">For Every type business</span>
-					<h2 class="mt-2 mb-4 mb-lg-0">Entrust Your Project to Our Best Team of Professionals</h2>
-				</div>
-				<div class="col-lg-4">
-					<a href="contact.html" class="btn btn-main btn-round-full float-lg-right ">Contact Us</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<footer class="footer section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="widget">
-          <h4 class="text-capitalize mb-4">Company</h4>
-
-          <ul class="list-unstyled footer-menu lh-35">
-            <li><a href="about.html">Terms & Conditions</a></li>
-            <li><a href="about.html">Privacy Policy</a></li>
-            <li><a href="cobtact.html">Support</a></li>
-            <li><a href="cobtact.html">FAQ</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-2 col-md-6 col-sm-6">
-        <div class="widget">
-          <h4 class="text-capitalize mb-4">Quick Links</h4>
-
-          <ul class="list-unstyled footer-menu lh-35">
-            <li><a href="about.html">About</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="blog-grid.html">Blogs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 mx-auto">
-        <div class="widget">
-          <h4 class="text-capitalize mb-4">Subscribe Us</h4>
-          <p>Subscribe to get latest news article and resources </p>
-
-          <form action="#" class="sub-form">
-            <input type="text" class="form-control mb-3" placeholder="Subscribe Now ...">
-            <a href="#" class="btn btn-main btn-small">subscribe</a>
-          </form>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-sm-6">
-        <div class="widget">
-          <div class="logo mb-4">
-            <h3>Mega<span>kit.</span></h3>
-          </div>
-          <h6><a href="mailto:support@gmail.com">Support@megakit.com</a></h6>
-          <a href="tel:+23-345-67890"><span class="text-color h4">+23-456-6588</span></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-btm pt-4">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="copyright">
-            Copyright &copy; 2020, Designed &amp; Developed by <a href="https://themefisher.com/"
-              >Themefisher</a>
-          </div>
-        </div>
-        <div class="col-lg-6 text-left text-lg-right">
-          <ul class="list-inline footer-socials">
-            <li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="fab fa-facebook-f mr-2"></i>Facebook</a></li>
-            <li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="fab fa-twitter mr-2"></i>Twitter</a></li>
-            <li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="fab fa-pinterest-p mr-2 "></i>Pinterest</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!--Scroll to top-->
-<div id="scroll-to-top" class="scroll-to-top">
-  <span class="icon fa fa-angle-up"></span>
-</div>
-
-
-<!-- 
-Essential Scripts
-=====================================-->
-<!-- Main jQuery -->
-<script src="{% static '/agitweb/plugins/jquery/jquery.min.js'%}"></script>
-<!-- Bootstrap 4.3.1 -->
-<script src="{% static '/agitweb/plugins/bootstrap/bootstrap.min.js'%}"></script>
-<!--  Magnific Popup-->
-<script src="{% static '/agitweb/plugins/magnific-popup/jquery.magnific-popup.min.js'%}"></script>
-<!-- Slick Slider -->
-<script src="{% static '/agitweb/plugins/slick/slick.min.js'%}"></script>
-<!-- Counterup -->
-<script src="{% static '/agitweb/plugins/counterup/jquery.waypoints.min.js'%}"></script>
-<script src="{% static '/agitweb/plugins/counterup/jquery.counterup.min.js'%}"></script>
-
-<!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
-<script src="{% static '/agitweb/plugins/google-map/map.js'%}" defer></script>
-
-<script src="{% static '/agitweb/js/script.js'%}"></script>
-
-</body>
-
-</html>
+{% endblock %}
