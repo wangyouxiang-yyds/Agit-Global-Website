@@ -76,12 +76,13 @@ WSGI_APPLICATION = 'DjangoProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+'''
 
 # 串接mssql
 DATABASES = {
@@ -98,7 +99,7 @@ DATABASES = {
         },
     },
 }
-
+'''
 '''
 有關加入使用者帳號.....
 1.點選自資料庫伺服器右鍵 >> 屬性 >> 左邊選取頁面下的安全性>> 伺服器驗證記得把"SQL server 及 Windows驗證模式打開"(你創好了這個沒打開你會登入失敗一輩子)
@@ -161,11 +162,12 @@ python manage.py collectstatic
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'static/'
 ]
 
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

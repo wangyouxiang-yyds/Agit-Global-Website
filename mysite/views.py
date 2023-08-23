@@ -1,10 +1,11 @@
-from django.shortcuts import render
+
+from django.shortcuts import render, get_object_or_404
 from mysite import models, approval
 from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-
+from .models import article
 
 # Create your views here.
 
@@ -73,6 +74,7 @@ def project(request):
     return render(request, 'project.html', locals())
 
 def blog_grid(request):
+    article = models.article.objects.all()
 
     return render(request, 'blog-grid.html', locals())
 
@@ -80,11 +82,12 @@ def blog_sidebar(request):
 
     return render(request, 'blog-sidebar.html', locals())
 
-def blog_single(request):
-
-    return render(request, 'blog-single.html', locals())
+def blog_single(request, article_id):
+    article_obj = get_object_or_404(article, pk=article_id)
+    return render(request, 'blog-single.html', {'article_obj': article_obj})
 
 
 def contact(request):
 
     return render(request, 'contact.html', locals())
+

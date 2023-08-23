@@ -23,6 +23,8 @@ class article(models.Model):  # 文章
     modify_date = models.DateTimeField(auto_now=True)   # 修改時間
     create_date = models.DateField(auto_now_add=True)   # 新增時間
     article_photo = models.ImageField(upload_to='article_photo', max_length=255)
+    def __str__(self):
+        return self.title
 
 # class article_photo(models.Model): # 圖片
 #     url = models.ForeignKey(article, on_delete=models.CASCADE)
