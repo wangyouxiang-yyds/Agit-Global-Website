@@ -34,8 +34,11 @@
   <link rel="stylesheet" href="{% static '/agitweb/css/style.css'%}">
 
   <!--Favicon網頁icon-->
-  <link rel="icon" href="{% static '/agitweb/images/favicon.png'%}" type="image/x-icon">
-
+  <link rel="icon" href="{% static '/agitweb/images/favicon.png'%}" type="image/x-icon">%}
+  {% block cssarea %}
+  
+  {% endblock %}  
+    
 </head>
 
 <body>
@@ -78,10 +81,10 @@
       
             <div class="collapse navbar-collapse text-center" id="navbarsExample09">
               <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item {% if current_url == index_url %}active{% endif %} ">
                   <a class="nav-link" href="{% url 'index' %}">首頁</a>
                 </li>
-                <li class="nav-item dropdown @@about">
+                <li class="nav-item dropdown @@about {% if current_url == about_url %}active{% endif %}">
                   <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">關於我們 <i class="fas fa-chevron-down small"></i></a>
                   <ul class="dropdown-menu" aria-labelledby="dropdown03">
                     <li><a class="dropdown-item @@company" href="{% url 'about' %}">關於公司</a></li>
@@ -97,13 +100,13 @@
                     </li>
                   </ul>
                 </li>
-                <li class="nav-item @@service"><a class="nav-link" href="{% url 'service' %}">服務</a></li>
-                <li class="nav-item @@project"><a class="nav-link" href="{% url 'project' %}">圖片展示</a></li>
+                <li class="nav-item @@service {% if current_url == service_url %}active{% endif %}"><a class="nav-link" href="{% url 'service' %}">服務</a></li>
+                <li class="nav-item @@project {% if current_url == project_url %}active{% endif %}"><a class="nav-link" href="{% url 'project' %}">圖片展示</a></li>
                 <li class="nav-item dropdown @@blog">
                   <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="fas fa-chevron-down small"></i></a>
                   <ul class="dropdown-menu" aria-labelledby="dropdown05">
-                    <li><a class="dropdown-item @@blogGrid" href="{% url 'blog_grid'%}">公告文章</a></li>
-                    <li><a class="dropdown-item @@blogSidebar" href="{% url 'blog_sidebar'%}">公告文章有Sidebar</a></li>
+                    <li><a class="dropdown-item @@blogGrid {% if current_url == blog_grid_url %}active{% endif %}" href="{% url 'blog_grid'%}">公告文章</a></li>
+                    <li><a class="dropdown-item @@blogSidebar {% if current_url == blog_sidebar_url %}active{% endif %}" href="{% url 'blog_sidebar'%}">公告文章有Sidebar</a></li>
 {#                    <li><a class="dropdown-item @@blogSingle" href="{% url 'blog_single'%}">文章內頁</a></li>#}
 
 {#                    <li class="dropdown dropdown-submenu dropleft">#}
@@ -116,7 +119,7 @@
 {#                    </li>#}
                   </ul>
                 </li>
-                <li class="nav-item @@contact"><a class="nav-link" href="{% url 'contact'%}">聯絡我們</a></li>
+                <li class="nav-item @@contact {% if current_url == contact_url %}active{% endif %}"><a class="nav-link" href="{% url 'contact'%}">聯絡我們</a></li>
               </ul>
       
               <div class="my-2 my-md-0 ml-lg-4 text-center">
