@@ -5,4 +5,5 @@ from mysite import models
 admin.site.register(models.article_category)
 admin.site.register(models.article)
 admin.site.register(models.author)
-
+admin.site.register(models.manager)
+admin.site.register(models.manager_category)
