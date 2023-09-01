@@ -36,3 +36,20 @@ class author(models.Model):
     position = models.CharField(max_length=10, null=False)
 
 
+    def __str__(self):
+        return self.name
+
+
+class manager_category(models.Model):
+    manager_category = models.CharField(max_length=10, null=False)
+    def __str__(self):
+        return self.manager_category
+class manager(models.Model):
+    manager_name = models.CharField(max_length=10, null=False)  # 作者
+    position = models.CharField(max_length=10, null=False)  # 職稱
+    manager_photo = models.ImageField(upload_to='manager_photo', max_length=255)    # 圖片
+    manager_saying = models.CharField(max_length=50, null=False)    # 主管的話
+    manager_category = models.ForeignKey(manager_category, on_delete=models.CASCADE)  # foreign key
+
+    def __str__(self):
+        return self.manager_name
