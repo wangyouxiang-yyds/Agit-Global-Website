@@ -53,3 +53,24 @@ class manager(models.Model):
 
     def __str__(self):
         return self.manager_name
+
+
+class banner_category(models.Model):
+    banner_category = models.CharField(max_length=10, null=False)
+
+    def __str__(self):
+        return self.banner_category
+class banner(models.Model):
+    banner_photo = models.ImageField(upload_to='banner_photo', max_length=255)  # 圖片
+    modify_date = models.DateTimeField(auto_now=True)  # 修改時間
+    create_date = models.DateField(auto_now_add=True)  # 新增時間
+    banner_category = models.ForeignKey(banner_category, on_delete=models.CASCADE)  # foreign key
+
+class project(models.Model):
+    project_photo = models.ImageField(upload_to='project_photo', max_length=255)  # 圖片
+    big_title = models.CharField(max_length=50, null=False)  # 大標題
+    little_title = models.CharField(max_length=50, null=False)  # 小標題
+    modify_date = models.DateTimeField(auto_now=True)  # 修改時間
+    create_date = models.DateField(auto_now_add=True)  # 新增時間
+    def __str__(self):
+        return self.big_title

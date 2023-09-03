@@ -2,17 +2,17 @@
 {% load static %}
 
 {% block Slider_Start %}
-<section class="page-title bg-1">
+<section class="page-title bg-1" style="background-image: url('{{ banners.0.banner_photo.url }}')">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
           <span class="text-white">Contact Us</span>
-          <h1 class="text-capitalize mb-4 text-lg">Get in Touch</h1>
+          <h1 class="text-capitalize mb-4 text-lg">聯絡我們</h1>
           <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+            <li class="list-inline-item"><a href="{% url 'index' %}" class="text-white">首頁</a></li>
             <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item text-white-50">Contact Us</li>
+            <li class="list-inline-item text-white-50">聯絡我們</li>
           </ul>
         </div>
       </div>
@@ -48,13 +48,13 @@
 
 					<ul class="address-block list-unstyled">
 						<li>
-							<i class="ti-direction mr-3"></i>North Main Street,Brooklyn Australia
+							<i class="ti-direction mr-3"></i>542南投縣草屯鎮富頂路一段446號
 						</li>
 						<li>
-							<i class="ti-email mr-3"></i>Email: contact@mail.com
+							<i class="ti-email mr-3"></i>Email: it@agit-global.com
 						</li>
 						<li>
-							<i class="ti-mobile mr-3"></i>Phone:+88 01672 506 744
+							<i class="ti-mobile mr-3"></i>Phone:+886 0963982828
 						</li>
 					</ul>
 
@@ -74,9 +74,9 @@
 		</div>
 	</div>
 </section>
-
-<div class="google-map">
-	<div id="map" data-latitude="40.712776" data-longitude="-74.005974" data-marker="images/marker.png" data-marker-name="Megakit"></div>
-</div>
+{##}
+{#<div class="google-map">#}
+{#	<div id="map" data-latitude="23.972289743438694" data-longitude="120.70861087196438"></div>#}
+{#</div>#}
 
 {% endblock %}

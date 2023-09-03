@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="{% static '/agitweb/css/style.css'%}">
 
   <!--Favicon網頁icon-->
-  <link rel="icon" href="{% static '/agitweb/images/favicon.png'%}" type="image/x-icon">%}
+  <link rel="icon" href="{% static '/agitweb/images/favicon.png'%}" type="image/x-icon">
   {% block cssarea %}
   
   {% endblock %}  
@@ -101,7 +101,7 @@
                   </ul>
                 </li>
                 <li class="nav-item @@service {% if current_url == service_url %}active{% endif %}"><a class="nav-link" href="{% url 'service' %}">服務</a></li>
-                <li class="nav-item @@project {% if current_url == project_url %}active{% endif %}"><a class="nav-link" href="{% url 'project' %}">圖片展示</a></li>
+                <li class="nav-item @@project {% if current_url == project_url %}active{% endif %}"><a class="nav-link" href="{% url 'project' %}">榮獲獎項</a></li>
                 <li class="nav-item dropdown @@blog">
                   <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="fas fa-chevron-down small"></i></a>
                   <ul class="dropdown-menu" aria-labelledby="dropdown05">
@@ -123,7 +123,7 @@
               </ul>
       
               <div class="my-2 my-md-0 ml-lg-4 text-center">
-                  <a href="contact.html" class="btn btn-solid-border btn-round-full">Get a Quote</a>
+                  <a href={% url 'contact'%} class="btn btn-solid-border btn-round-full">Get a Quote</a>
               </div>
             </div>
           </nav>
@@ -208,10 +208,10 @@
           <h4 class="text-capitalize mb-4">Quick Links</h4>
 
           <ul class="list-unstyled footer-menu lh-35">
-            <li><a href="about.html">About</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="blog-grid.html">Blogs</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href={% url 'about' %}>關於我們</a></li>
+            <li><a href={% url 'service' %}>服務</a></li>
+            <li><a href={% url 'blog_grid'%}>文章</a></li>
+            <li><a href={% url 'contact'%}>聯絡我們</a></li>
           </ul>
         </div>
       </div>

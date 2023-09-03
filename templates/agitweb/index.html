@@ -2,7 +2,7 @@
 {% load static %}
 {% block Slider_Start %}
 <!-- Slider Start -->
-<section class="slider">
+<section class="slider" style="background-image: url('{{ banners.0.banner_photo.url }}')">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9 col-md-10">
@@ -185,7 +185,7 @@
 
 <!-- Section Cta Start -->
 {% block Cta %}
-<section class="section cta">
+<section class="section cta" style="background-image: url('{{ banner_sec_part.0.banner_photo.url }}')">     {# 第二個banner #}
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-5 col-lg-6">
@@ -206,7 +206,7 @@
 {% block Testimonial %}
 
 
-<section class="section latest-blog bg-2">
+<section class="section latest-blog bg-2" style="background-image: url('{{ banner_third_part.0.banner_photo.url }}')">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-7 text-center">
