@@ -4,8 +4,8 @@ from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from .models import article, banner, banner_category
-
+from .models import article, banner, banner_category, department_form_category, department_form
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
@@ -81,6 +81,12 @@ def service(request):
     current_url = request.path_info
     service_url = reverse('service')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='service')
+    categories = department_form_category.objects.all()
+
+    department_forms_by_category = {}
+    for category in categories:
+        forms = department_form.objects.filter(department_form_category=category)
+        department_forms_by_category[category] = forms
     return render(request, 'service.html', locals())
 
 
@@ -93,22 +99,53 @@ def project(request):
 
 
 def blog_grid(request):
+
     article = models.article.objects.all().order_by('-pk', 'create_date')  # -pk為降序 這邊說明為依照建立時間去排序
     current_url = request.path_info
     blog_grid_url = reverse('blog_grid')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='blog')
+
+    limit = 4  # 每筆4則就文章分頁
+    page = request.GET.get('page', 1)
+    paginator = Paginator(article, limit)
+
+    try:
+        article = paginator.page(page)
+    except PageNotAnInteger:
+        article= paginator.page(1)
+    except EmptyPage:
+        article = paginator.page(paginator.num_pages)
+
     return render(request, 'blog-grid.html', locals())
 
 
 def blog_sidebar(request):
+    article = models.article.objects.all().order_by('-pk', 'create_date')  # -pk為降序 這邊說明為依照建立時間去排序
+
     current_url = request.path_info
     blog_sidebar_url = reverse('blog_sidebar')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='blog') # 挑選banner
+    article_news_three = models.article.objects.all().order_by('-pk', 'create_date')[:3]  # -pk為降序 這邊說明為依照建立時間去排序 限制三筆
+
+    limit = 4  # 每筆4則就文章分頁
+    page = request.GET.get('page', 1)
+    paginator = Paginator(article, limit)
+
+    try:
+        article = paginator.page(page)
+    except PageNotAnInteger:
+        article= paginator.page(1)
+    except EmptyPage:
+        article = paginator.page(paginator.num_pages)
 
     return render(request, 'blog-sidebar.html', locals())
 
 
 def blog_single(request, article_id):
+    article = models.article.objects.all().order_by('-pk', 'create_date')  # -pk為降序 這邊說明為依照建立時間去排序
+    current_article = get_object_or_404(models.article, pk=article_id)
+    previous_article = models.article.objects.filter(pk__lt=article_id).order_by('-pk').first()
+    next_article = models.article.objects.filter(pk__gt=article_id).order_by('pk').first()
     article_obj = get_object_or_404(article, pk=article_id)
     current_url = request.path_info
     article_news_three = models.article.objects.all().order_by('-pk', 'create_date')[:3]        # -pk為降序 這邊說明為依照建立時間去排序 限制三筆
@@ -121,3 +158,5 @@ def contact(request):
     contact_url = reverse('contact')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='contact')
     return render(request, 'contact.html', locals())
+
+

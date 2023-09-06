@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block Slider_Start %}
-    <section class="page-title bg-1">
+    <section class="page-title bg-1" style="background-image: url('{{ banners.0.banner_photo.url }}')">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -82,26 +82,30 @@
 
                         <div class="col-lg-12 mb-5">
                             <div class="posts-nav bg-white p-5 d-lg-flex d-md-flex justify-content-between ">
-                                <a class="post-prev align-items-center" href="#">
+                                {% if previous_article  %}
+                                <a class="post-prev align-items-center" href="{% url 'blog_single' previous_article.pk %}">
                                     <div class="posts-prev-item mb-4 mb-lg-0">
-                                        <span class="nav-posts-desc text-color">- Previous Post</span>
+                                        <span class="nav-posts-desc text-color">- 上一篇文章</span>
                                         <h6 class="nav-posts-title mt-1">
-                                            Donec consectetuer ligula <br>vulputate sem tristique.
+                                             {{ previous_article.title }}
                                         </h6>
                                     </div>
                                 </a>
+                                {% endif %}
                                 <div class="border"></div>
-                                <a class="posts-next" href="#">
+                                {% if next_article  %}
+                                <a class="posts-next" href="{% url 'blog_single' next_article.pk %}">
                                     <div class="posts-next-item pt-4 pt-lg-0">
-                                        <span class="nav-posts-desc text-lg-right text-md-right text-color d-block">- Next Post</span>
+                                        <span class="nav-posts-desc text-lg-right text-md-right text-color d-block">- 下一篇文章</span>
                                         <h6 class="nav-posts-title mt-1">
-                                            Ut aliquam sollicitudin leo.
+                                            {{ next_article.title }}
                                         </h6>
                                     </div>
                                 </a>
+                                {% endif %}
                             </div>
                         </div>
-
+{% comment %}
                         <div class="col-lg-12 mb-5">
                             <div class="comment-area card border-0 p-5">
                                 <h4 class="mb-4">2 Comments</h4>
@@ -152,7 +156,7 @@
                                 </ul>
                             </div>
                         </div>
-
+{% endcomment %}
                         <div class="col-lg-12">
                             <form class="contact-form bg-white rounded p-5" id="comment-form">
                                 <h4 class="mb-4">Write a comment</h4>
@@ -228,7 +232,7 @@
                                                      src="{% static 'agitweb/images/blog/bt-3.jpg' %}" alt="blog"></a>
 
                                     <div class="media-body">
-                                        <h6 class="my-2"><a href="#">{{ latest.title }}</a></h6>
+                                        <h6 class="my-2"><a href="{% url 'blog_single' latest.id %}">{{ latest.title }}</a></h6>
                                         <span class="text-sm text-muted">{{ latest.create_date }}</span>
                                     </div>
                                 </div>

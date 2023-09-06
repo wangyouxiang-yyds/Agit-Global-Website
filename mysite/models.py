@@ -74,3 +74,20 @@ class project(models.Model):
     create_date = models.DateField(auto_now_add=True)  # 新增時間
     def __str__(self):
         return self.big_title
+
+
+
+class department_form_category(models.Model):
+    department_form_category = models.CharField(max_length=50, null=False)
+
+    def __str__(self):
+        return self.department_form_category
+
+
+class department_form(models.Model):
+    form_name = models.CharField(max_length=50, null=False)  # 表單名稱
+    form_link = models.CharField(max_length=100, null=False)  # 表單連結
+    department_form_category = models.ForeignKey(department_form_category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.form_name

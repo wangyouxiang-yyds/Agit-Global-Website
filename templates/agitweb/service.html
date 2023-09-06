@@ -3,146 +3,107 @@
 
 {% block Slider_Start %}
 
-<section class="page-title bg-1" style="background-image: url('{{ banners.0.banner_photo.url }}')">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-          <span class="text-white">Our services</span>
-          <h1 class="text-capitalize mb-4 text-lg">What We Do</h1>
-          <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item text-white-50">Our services</li>
-          </ul>
+    <section class="page-title bg-1" style="background-image: url('{{ banners.0.banner_photo.url }}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <span class="text-white">各部門表單</span>
+                        <h1 class="text-capitalize mb-4 text-lg">所有的表單</h1>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="{% url 'index' %}" class="text-white">Home</a></li>
+                            <li class="list-inline-item"><span class="text-white">/</span></li>
+                            <li class="list-inline-item text-white-50">艾鉅表單</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 {% endblock %}
 
 
 {% block Section_Intro_Start %}
-<!--  Section Services Start -->
-<section class="section service border-top pb-5">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-7 text-center">
-				<div class="section-title">
-					<span class="h6 text-color">Our Services</span>
-					<h2 class="mt-3 content-title ">We provide a wide range of creative services </h2>
-				</div>
-			</div>
-		</div>
+    <!--  Section Services Start -->
+    <section class="section service border-top pb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7 text-center">
+                    <div class="section-title">
+                        <span class="h6 text-color">我們的表單</span>
+                        <h2 class="mt-3 content-title ">大大小小的表單都在這裡 </h2>
+                    </div>
+                </div>
+            </div>
 
-		<div class="row">
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-desktop"></i>
-					<h4 class="mb-3">Web development.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
+            <div class="row">
+                {% for category, forms in department_forms_by_category.items %}
 
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-layers"></i>
-					<h4 class="mb-3">Interface Design.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
+                    <div class="col-lg-6">
+                        <div style="font-size: 50px">{{ category.department_form_category }}</div>
+                        <p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#collapse{{ category.pk }}"
+                               role="button"
+                               aria-expanded="false" aria-controls="collapse{{ category.pk }}">
+                                打開表單
+                            </a>
 
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-bar-chart"></i>
-					<h4 class="mb-3">Business Consulting.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
+                        </p>
 
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-vector"></i>
-					<h4 class="mb-3">Branding.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
+                        <div class="collapse" id="collapse{{ category.pk }}">
 
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-android"></i>
-					<h4 class="mb-3">App development.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
+                            <div class="card card-body">
+                                {% for form in forms %}
+                                    <span>{{ form.form_name }}</span>
+                                    <a href="{{ form.form_link }}">{{ form.form_link }}</a>
+                                {% endfor %}
+                            </div>
 
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-pencil-alt"></i>
-					<h4 class="mb-3">Content creation.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
+                        </div>
+                    </div>
+                {% endfor %}
 
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-layers"></i>
-					<h4 class="mb-3">Interface Design.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
+            </div>
+        </div>
+    </section>
 
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-bar-chart"></i>
-					<h4 class="mb-3">Business Consulting.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
 
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-5">
-					<i class="ti-vector"></i>
-					<h4 class="mb-3">Branding.</h4>
-					<p>A digital agency isn't here to replace your internal team, we're here to partner</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--  Section Services End -->
+    <!-- Example single danger button -->
+
+    <!--  Section Services End -->
 {% endblock %}
 
 <section class="cta-2">
-	<div class="container">
-		<div class="cta-block p-5 rounded">
-			<div class="row justify-content-center align-items-center ">
-				<div class="col-lg-7 text-center text-lg-left">
-					<span class="text-color">For Every type business</span>
-					<h2 class="mt-2 text-white">Entrust Your Project to Our Best Team of Professionals</h2>
-				</div>
-				<div class="col-lg-4 text-center text-lg-right mt-4 mt-lg-0">
-					<a href="contact.html" class="btn btn-main btn-round-full">Contact Us</a>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="cta-block p-5 rounded">
+            <div class="row justify-content-center align-items-center ">
+                <div class="col-lg-7 text-center text-lg-left">
+                    <span class="text-color">For Every type business</span>
+                    <h2 class="mt-2 text-white">Entrust Your Project to Our Best Team of Professionals</h2>
+                </div>
+                <div class="col-lg-4 text-center text-lg-right mt-4 mt-lg-0">
+                    <a href="contact.html" class="btn btn-main btn-round-full">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 {% block pricing_contact_us %}
-	<div class="container">
-		<div class="cta-block mt-5 p-5 rounded">
-			<div class="row justify-content-center align-items-center ">
-				<div class="col-lg-7 text-center text-lg-left">
-					<span class="text-color">For Every type business</span>
-					<h2 class="mt-2 text-white">Entrust Your Project to Our Best Team of Professionals</h2>
-				</div>
-				<div class="col-lg-4 text-center text-lg-right mt-4 mt-lg-0">
-					<a href="contact.html" class="btn btn-main btn-round-full">Contact Us</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    <div class="container">
+        <div class="cta-block mt-5 p-5 rounded">
+            <div class="row justify-content-center align-items-center ">
+                <div class="col-lg-7 text-center text-lg-left">
+                    <span class="text-color">For Every type business</span>
+                    <h2 class="mt-2 text-white">Entrust Your Project to Our Best Team of Professionals</h2>
+                </div>
+                <div class="col-lg-4 text-center text-lg-right mt-4 mt-lg-0">
+                    <a href="contact.html" class="btn btn-main btn-round-full">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
 {% endblock %}
+
+

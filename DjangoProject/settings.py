@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'DjangoProject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -87,19 +87,19 @@ DATABASES = {
 # 串接mssql
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',  # 網路上的，官方教學沒幹用
-        'NAME': 'AGIT_SQL',  # "資料庫名稱"不是資料庫伺服器名稱喔!!下面的那個host才是
+        'ENGINE': 'mssql',  # 網路上的，官方教學沒幹用
+        'NAME': 'agitwebsite',  # "資料庫名稱"不是資料庫伺服器名稱喔!!下面的那個host才是
         'USER': 'sa',  # 使用者名稱，有關加入使用者帳號google吧
-        'PASSWORD': 'What23072891229',  # 密碼 BJ4
-        'HOST': 'DESKTOP-E1DPA4S',  # 資料庫伺服器名稱
-        'PORT': '',  # 我也不知道是幹啥用的有遇到在跟你說
+        'PASSWORD': 'HwK?7A*w*Dd$',  # 密碼 BJ4
+        'HOST': 'AGIT-WEB',  # 資料庫伺服器名稱
+        'PORT': '1433',  # 我也不知道是幹啥用的有遇到在跟你說
 
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',  # 去看ODBC的版本是多少
+            'DRIVER': 'SQL Server Native Client 11.0', # 去看ODBC的版本是多少
         },
     },
 }
-'''
+
 '''
 有關加入使用者帳號.....
 1.點選自資料庫伺服器右鍵 >> 屬性 >> 左邊選取頁面下的安全性>> 伺服器驗證記得把"SQL server 及 Windows驗證模式打開"(你創好了這個沒打開你會登入失敗一輩子)
