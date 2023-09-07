@@ -11,7 +11,7 @@
                         <span class="text-white">各部門表單</span>
                         <h1 class="text-capitalize mb-4 text-lg">所有的表單</h1>
                         <ul class="list-inline">
-                            <li class="list-inline-item"><a href="{% url 'index' %}" class="text-white">Home</a></li>
+                            <li class="list-inline-item"><a href="{% url 'index' %}" class="text-white">首頁</a></li>
                             <li class="list-inline-item"><span class="text-white">/</span></li>
                             <li class="list-inline-item text-white-50">艾鉅表單</li>
                         </ul>
@@ -41,30 +41,40 @@
                 {% for category, forms in department_forms_by_category.items %}
 
                     <div class="col-lg-6">
+
                         <div style="font-size: 50px">{{ category.department_form_category }}</div>
-                        <p>
-                            <a class="btn btn-primary" data-toggle="collapse" href="#collapse{{ category.pk }}"
-                               role="button"
-                               aria-expanded="false" aria-controls="collapse{{ category.pk }}">
-                                打開表單
-                            </a>
-
-                        </p>
-
+                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                data-target="#collapse{{ category.pk }}">
+                            打開表單
+                        </button>
                         <div class="collapse" id="collapse{{ category.pk }}">
-
-                            <div class="card card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>名稱</th>
+                                    <th>修改時間</th>
+                                    <th>修改者</th>
+                                </tr>
+                                </thead>
                                 {% for form in forms %}
-                                    <span>{{ form.form_name }}</span>
-                                    <a href="{{ form.form_link }}">{{ form.form_link }}</a>
-                                {% endfor %}
-                            </div>
+                                    <tbody>
+                                    <tr>
+                                        <td><a href="{{ form.form_link }}" target="_blank">{{ form.form_name }}</a></td>
+                                        <td>{{ form.modify_date }}</td>
+                                        <td>{{ form.modify_user}}</td>
+                                    </tr>
 
+                                    </tbody>
+                                {% endfor %}
+
+                            </table>
                         </div>
+
                     </div>
                 {% endfor %}
-
             </div>
+
+
         </div>
     </section>
 
@@ -73,7 +83,7 @@
 
     <!--  Section Services End -->
 {% endblock %}
-
+{% comment %}
 <section class="cta-2">
     <div class="container">
         <div class="cta-block p-5 rounded">
@@ -107,3 +117,4 @@
 {% endblock %}
 
 
+{% endcomment %}

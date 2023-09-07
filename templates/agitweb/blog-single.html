@@ -6,12 +6,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="block text-center">
-                        <span class="text-white">News details</span>
-                        <h1 class="text-capitalize mb-4 text-lg">Blog Single</h1>
+                        <span class="text-white">文章與公告</span>
+                        <h1 class="text-capitalize mb-4 text-lg">艾鉅公告與文章</h1>
                         <ul class="list-inline">
-                            <li class="list-inline-item"><a href="{% url 'index' %}" class="text-white">Home</a></li>
+                            <li class="list-inline-item"><a href="{% url 'index' %}" class="text-white">首頁</a></li>
                             <li class="list-inline-item"><span class="text-white">/</span></li>
-                            <li class="list-inline-item text-white-50">News details</li>
+                            <li class="list-inline-item text-white-50">文章與公告</li>
                         </ul>
                     </div>
                 </div>
@@ -228,8 +228,8 @@
                             {% for latest in article_news_three %}
 
                                 <div class="media border-bottom py-3">
-                                    <a href="#"><img loading="lazy" class="mr-4"
-                                                     src="{% static 'agitweb/images/blog/bt-3.jpg' %}" alt="blog"></a>
+                                    <a href="{% url 'blog_single' latest.id %}"><img loading="lazy" class="mr-4"
+                                                     src="{{ latest.article_photo.url }}" alt="blog" style="width: 87px; height: 72px;"></a>
 
                                     <div class="media-body">
                                         <h6 class="my-2"><a href="{% url 'blog_single' latest.id %}">{{ latest.title }}</a></h6>
@@ -239,7 +239,7 @@
                             {% endfor %}
 
                         </div>
-
+{% comment %}
                         <div class="sidebar-widget bg-white rounded tags p-4 mb-3">
                             <h5 class="mb-4">Tags</h5>
 
@@ -252,6 +252,7 @@
                             <a href="#">Social Media</a>
                             <a href="#">Branding</a>
                         </div>
+{% endcomment %}
                     </div>
                 </div>
             </div>

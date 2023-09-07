@@ -11,4 +11,10 @@ admin.site.register(models.banner_category)
 admin.site.register(models.banner)
 admin.site.register(models.project)
 admin.site.register(models.department_form_category)
-admin.site.register(models.department_form)
+
+
+
+class department_form(admin.ModelAdmin):
+    list_display = ('department_form_category', 'form_name', 'form_link', 'modify_date', 'modify_user')
+
+admin.site.register(models.department_form, department_form)

@@ -78,16 +78,18 @@ class project(models.Model):
 
 
 class department_form_category(models.Model):
-    department_form_category = models.CharField(max_length=50, null=False)
+    department_form_category = models.CharField("表單存放部門", max_length=50, null=False)
 
     def __str__(self):
         return self.department_form_category
 
 
 class department_form(models.Model):
-    form_name = models.CharField(max_length=50, null=False)  # 表單名稱
-    form_link = models.CharField(max_length=100, null=False)  # 表單連結
-    department_form_category = models.ForeignKey(department_form_category, on_delete=models.CASCADE)
+    form_name = models.CharField("表單名稱", max_length=50, null=False)  # 表單名稱
+    form_link = models.CharField("表單連結", max_length=100, null=False)  # 表單連結
+    modify_date = models.DateTimeField("修改時間", auto_now=True)  # 修改時間
+    modify_user = models.CharField("修改者", max_length=50, null=False)  # 修改者
+    department_form_category = models.ForeignKey( department_form_category, on_delete=models.CASCADE, verbose_name='表單存放部門')
 
     def __str__(self):
         return self.form_name
