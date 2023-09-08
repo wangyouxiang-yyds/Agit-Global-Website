@@ -18,3 +18,11 @@ class department_form(admin.ModelAdmin):
     list_display = ('department_form_category', 'form_name', 'form_link', 'modify_date', 'modify_user')
 
 admin.site.register(models.department_form, department_form)
+
+
+
+
+class common_link(admin.ModelAdmin):
+    list_display = ('link_title', 'link_href')
+
+admin.site.register(models.common_link, common_link)

@@ -4,7 +4,7 @@ from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from .models import article, banner, banner_category, department_form_category, department_form
+from .models import article, banner, banner_category, department_form_category, department_form, common_link
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
@@ -87,6 +87,9 @@ def service(request):
     for category in categories:
         forms = department_form.objects.filter(department_form_category=category)
         department_forms_by_category[category] = forms
+
+
+    com_link = common_link.objects.all()
     return render(request, 'service.html', locals())
 
 

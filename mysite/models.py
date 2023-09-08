@@ -93,3 +93,9 @@ class department_form(models.Model):
 
     def __str__(self):
         return self.form_name
+
+
+class common_link(models.Model):
+    link_title = models.CharField("常用連結名稱", max_length=50, null=False )  # 表單名稱
+    link_href = models.CharField("使用連結或說明", max_length=100, null=False )  # 表單名稱)
+
