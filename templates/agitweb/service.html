@@ -26,97 +26,84 @@
 
 {% block Section_Intro_Start %}
     <!--  Section Services Start -->
-    <section class="section service border-top pb-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-7 text-center">
-                    <div class="section-title">
-                        <span class="h6 text-color">我們的表單</span>
-                        <h2 class="mt-3 content-title ">大大小小的表單都在這裡 </h2>
+    <div class="container">
+    <div class="row">
+        <!-- 左边部分 -->
+        <div class="col-lg-8">
+            <section class="section service border-top pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7 text-center">
+                            <div class="section-title">
+                                <span class="h6 text-color">我們的表單</span>
+                                <h2 class="mt-3 content-title ">所有的表單都在這裡</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-between">
+                        {% for category, forms in department_forms_by_category.items %}
+                            <div class="col-lg-8">
+                                <div style="font-size: 50px">{{ category.department_form_category }}</div>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                        data-target="#collapse{{ category.pk }}">
+                                    打開表單
+                                </button>
+                                <div class="collapse" id="collapse{{ category.pk }}">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>名稱</th>
+                                            <th>修改時間</th>
+                                            <th>修改者</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for form in forms %}
+                                            <tr>
+                                                <td><a href="{{ form.form_link }}"
+                                                       target="_blank">{{ form.form_name }}</a></td>
+                                                <td>{{ form.modify_date }}</td>
+                                                <td>{{ form.modify_user }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </div>
+            </section>
+        </div>
 
-            <div class="row d-flex justify-content-between">
-                {% for category, forms in department_forms_by_category.items %}
-
-                    <div class="col-lg-6">
-
-                        <div style="font-size: 50px">{{ category.department_form_category }}</div>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse"
-                                data-target="#collapse{{ category.pk }}">
-                            打開表單
-                        </button>
-                        <div class="collapse" id="collapse{{ category.pk }}">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>名稱</th>
-                                    <th>修改時間</th>
-                                    <th>修改者</th>
-                                </tr>
-                                </thead>
-                                {% for form in forms %}
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="{{ form.form_link }}" target="_blank">{{ form.form_name }}</a></td>
-                                        <td>{{ form.modify_date }}</td>
-                                        <td>{{ form.modify_user }}</td>
-                                    </tr>
-
-                                    </tbody>
-                                {% endfor %}
-
-                            </table>
+        <div class="col-lg-4">
+            <section class="section service border-top pb-4">
+                <div class="container text-center">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7 text-center">
+                            <div class="section-title">
+                                <span class="h6 text-color">我們的連結</span>
+                                <h2 class="mt-3 content-title">常用連結</h2>
+                            </div>
                         </div>
-
                     </div>
-                {% endfor %}
-
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-7 text-center">
-                <div class="section-title">
-                    <h2 class="mt-3 content-title ">常用連結 </h2>
+                    <div class="list-group">
+                        {% for link in com_link %}
+                            {% if link.link_href|slice:":4" == "http" %}
+                                <a href="{{ link.link_href }}" class="list-group-item list-group-item-action"
+                                   target="_blank">
+                                    {{ link.link_title }}
+                                </a>
+                            {% else %}
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    {{ link.link_title }} ({{ link.link_href }})
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <!-- 使用Bootstrap示例代码的列表组 -->
-                <div class="list-group" id="myList" role="tablist">
-                    {% for link in com_link %}
-                        <a class="list-group-item list-group-item-action {% if forloop.first %}active{% endif %}"
-                           data-toggle="list" href="#{{ link.link_title|slugify }}" role="tab">
-                            {{ link.link_title }}
-                        </a>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-8">
-                <!-- 使用Bootstrap示例代码的选项卡内容 -->
-                <div class="tab-content">
-                    {% for link in com_link %}
-                        <div class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ link.link_title|slugify }}"
-                             role="tabpanel">
-                            {{ link.link_href }}
-
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+            </section>
         </div>
     </div>
 

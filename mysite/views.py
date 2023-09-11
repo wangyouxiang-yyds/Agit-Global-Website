@@ -89,7 +89,7 @@ def service(request):
         department_forms_by_category[category] = forms
 
 
-    com_link = common_link.objects.all()
+    com_link = common_link.objects.all().order_by('-pk')
     return render(request, 'service.html', locals())
 
 
