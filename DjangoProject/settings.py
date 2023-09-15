@@ -160,13 +160,13 @@ python manage.py collectstatic
 才會生效
 '''
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, '/static/').replace('\\', '/')
 STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\','/')
 
 
 # Default primary key field type

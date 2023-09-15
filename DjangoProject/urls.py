@@ -16,26 +16,29 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf.urls.static import serve
 from mysite import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import re_path
+
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('index/', views.index, name='index'),
-    path('admin/', admin.site.urls),
-    path('about/', views.about, name='about'),  # 關於頁面
-    path('pricing/', views.pricing, name='pricing'),  # 價錢諮詢
-    path('service/', views.service, name='service'),  #
-    path('project/', views.project, name='project'),  # project
-    path('blog_grid/', views.blog_grid, name='blog_grid'),  #
-    path('blog_sidebar/', views.blog_sidebar, name='blog_sidebar'),  #
-    path('blog_single/<int:article_id>', views.blog_single, name='blog_single'),  #
-    path('contact/', views.contact, name='contact'),  #
+                  path('', views.index, name='index'),
+                  path('index/', views.index, name='index'),
+                  path('admin/', admin.site.urls),
+                  path('about/', views.about, name='about'),  # 關於頁面
+                  path('pricing/', views.pricing, name='pricing'),  # 價錢諮詢
+                  path('service/', views.service, name='service'),  #
+                  path('project/', views.project, name='project'),  # project
+                  path('blog_grid/', views.blog_grid, name='blog_grid'),  #
+                  path('blog_sidebar/', views.blog_sidebar, name='blog_sidebar'),  #
+                  path('blog_single/<int:article_id>', views.blog_single, name='blog_single'),  #
+                  path('contact/', views.contact, name='contact'),  #
 
+                  re_path('^stiaic/(?P<path>.*)', serve, {'document_root': settings.STATIC_ROOT}),
 
+                  re_path('^media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
 
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

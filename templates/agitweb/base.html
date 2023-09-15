@@ -50,9 +50,7 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-2 col-md-4">
                     <div class="header-top-socials text-center text-lg-left text-md-left">
-                        <a href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-8 text-center text-lg-right text-md-right">
@@ -133,10 +131,11 @@
                                 <li class="nav-item @@contact {% if current_url == contact_url %}active{% endif %}"><a
                                         class="nav-link" href="{% url 'contact' %}">聯絡我們</a></li>
                             </ul>
-
+{% comment %}
                             <div class="my-2 my-md-0 ml-lg-4 text-center">
                                 <a href={% url 'contact' %} class="btn btn-solid-border btn-round-full">Get a Quote</a>
                             </div>
+{% endcomment %}
                         </div>
                     </nav>
                 </div>
@@ -204,7 +203,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="widget">
-                    <h4 class="text-capitalize mb-4">Company</h4>
+                    <h4 class="text-capitalize mb-4">公司</h4>
 
                     <ul class="list-unstyled footer-menu lh-35">
                         <li><a href="about.html">Terms & Conditions</a></li>
@@ -216,7 +215,7 @@
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6">
                 <div class="widget">
-                    <h4 class="text-capitalize mb-4">Quick Links</h4>
+                    <h4 class="text-capitalize mb-4">快速連結</h4>
 
                     <ul class="list-unstyled footer-menu lh-35">
                         <li><a href={% url 'about' %}>關於我們</a></li>
@@ -226,6 +225,7 @@
                     </ul>
                 </div>
             </div>
+
             <div class="col-lg-3 col-md-6 col-sm-6 mx-auto">
                 <div class="widget">
                     <h4 class="text-capitalize mb-4">Subscribe Us</h4>
@@ -259,11 +259,14 @@
                 </div>
                 <div class="col-lg-6 text-left text-lg-right">
                     <ul class="list-inline footer-socials">
+{% comment %}
+
+
                         <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f mr-2"></i>Facebook</a></li>
                         <li class="list-inline-item"><a href="#"><i class="fab fa-twitter mr-2"></i>Twitter</a></li>
                         <li class="list-inline-item"><a href="#"><i class="fab fa-instagram-p mr-2 "></i>Instagram</a>
                         </li>
-
+{% endcomment %}
                     </ul>
                 </div>
             </div>

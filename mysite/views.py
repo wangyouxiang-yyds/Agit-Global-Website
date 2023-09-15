@@ -160,6 +160,9 @@ def contact(request):
     current_url = request.path_info
     contact_url = reverse('contact')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='contact')
+
+
+
     return render(request, 'contact.html', locals())
 
 

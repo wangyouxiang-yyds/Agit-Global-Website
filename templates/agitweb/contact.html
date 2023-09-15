@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <span class="text-white">Contact Us</span>
+          <span class="text-white">寫信給管理部</span>
           <h1 class="text-capitalize mb-4 text-lg">聯絡我們</h1>
           <ul class="list-inline">
             <li class="list-inline-item"><a href="{% url 'index' %}" class="text-white">首頁</a></li>
@@ -27,24 +27,24 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-12 col-sm-12">
 				<form id="contact-form" class="contact__form" method="post" action="index.html">
-					<h3 class="text-md mb-4">Contact Form</h3>
+					<h3 class="text-md mb-4">連絡表格</h3>
 					<div class="form-group">
-						<input name="name" type="text" class="form-control" placeholder="Your Name" required>
+						<input name="name" type="text" class="form-control" placeholder="您的名字" required>
 					</div>
 					<div class="form-group">
-						<input name="email" type="email" class="form-control" placeholder="Email Address" required>
+						<input name="email" type="email" class="form-control" placeholder="Email" required>
 					</div>
 					<div class="form-group-2 mb-4">
-						<textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+						<textarea name="message" class="form-control" rows="4" placeholder="您的留言" required></textarea>
 					</div>
-					<button class="btn btn-main" name="submit" type="submit">Send Message</button>
+					<button class="btn btn-main" name="submit" type="submit">送出訊息</button>
 				</form>
 			</div>
 
 			<div class="col-lg-5 col-sm-12">
 				<div class="contact-content pl-lg-5 mt-5 mt-lg-0">
-					<span class="text-muted">We are Professionals</span>
-					<h2 class="mb-5 mt-2">Don’t Hesitate to contact with us for any kind of information</h2>
+					<span class="text-muted">我們提供專業的服務</span>
+					<h2 class="mb-5 mt-2">我們收到您的留言會快速的處理您的問題，務必耐心等候我們的回覆!</h2>
 
 					<ul class="address-block list-unstyled">
 						<li>
@@ -57,7 +57,7 @@
 							<i class="ti-mobile mr-3"></i>Phone:+886 0963982828
 						</li>
 					</ul>
-
+{% comment %}
 					<ul class="social-icons list-inline mt-5">
 						<li class="list-inline-item">
 							<a href="http://www.themefisher.com"><i class="fab fa-facebook-f"></i></a>
@@ -70,6 +70,7 @@
 						</li>
 					</ul>
 				</div>
+{% endcomment %}
 			</div>
 		</div>
 	</div>
