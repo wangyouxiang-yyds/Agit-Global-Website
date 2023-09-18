@@ -131,21 +131,26 @@
                                 <li class="nav-item @@contact {% if current_url == contact_url %}active{% endif %}"><a
                                         class="nav-link" href="{% url 'contact' %}">聯絡我們</a></li>
                             </ul>
-{% comment %}
+                            {% comment %}
                             <div class="my-2 my-md-0 ml-lg-4 text-center">
                                 <a href={% url 'contact' %} class="btn btn-solid-border btn-round-full">Get a Quote</a>
                             </div>
 {% endcomment %}
                         </div>
                     </nav>
+
                 </div>
             </div>
         </div>
+        <marquee class="container-fluid" bgcolor="white" hspace="30" scrollamount="20"
+                 style="font-family:標楷體; color: red; font-size: 60px">{{ announcement }}</marquee>
     </div>
 </header>
+
 <!-- Header Close -->
 {% block Slider_Start %}
 {% endblock %}
+
 <!-- Section Intro Start -->
 {% block Section_Intro_Start %}
 {% endblock %}
@@ -259,7 +264,7 @@
                 </div>
                 <div class="col-lg-6 text-left text-lg-right">
                     <ul class="list-inline footer-socials">
-{% comment %}
+                        {% comment %}
 
 
                         <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f mr-2"></i>Facebook</a></li>

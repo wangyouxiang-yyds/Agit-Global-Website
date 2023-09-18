@@ -4,8 +4,9 @@ from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from .models import article, banner, banner_category, department_form_category, department_form, common_link
+from .models import article, banner, banner_category, department_form_category, department_form, common_link, marquee
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 # Create your views here.
 
@@ -48,15 +49,14 @@ def approval_view(request):
     return render(request, 'approval.html', locals())
 
 
-
-
 def index(request):
     current_url = request.path_info
     index_url = reverse('index')  # 顯示顏色的
-    banners = banner.objects.filter(banner_category__banner_category='index')       # 首頁打開第一個banner
-    banner_sec_part = banner.objects.filter(banner_category__banner_category='index_sec')   # 下滑第二個banner
-    banner_third_part = banner.objects.filter(banner_category__banner_category='index_thir')    # 第三個banner
+    banners = banner.objects.filter(banner_category__banner_category='index')  # 首頁打開第一個banner
+    banner_sec_part = banner.objects.filter(banner_category__banner_category='index_sec')  # 下滑第二個banner
+    banner_third_part = banner.objects.filter(banner_category__banner_category='index_thir')  # 第三個banner
     article_news_three = models.article.objects.all().order_by('-pk', 'create_date')[:3]  # -pk為降序 這邊說明為依照建立時間去排序 限制三筆
+
     return render(request, 'index.html', locals())
 
 
@@ -88,7 +88,6 @@ def service(request):
         forms = department_form.objects.filter(department_form_category=category)
         department_forms_by_category[category] = forms
 
-
     com_link = common_link.objects.all().order_by('-pk')
     return render(request, 'service.html', locals())
 
@@ -96,13 +95,12 @@ def service(request):
 def project(request):
     current_url = request.path_info
     project_url = reverse('project')  # 顯示顏色的
-    banners = banner.objects.filter(banner_category__banner_category='project')# 挑選banner
+    banners = banner.objects.filter(banner_category__banner_category='project')  # 挑選banner
     award = models.project.objects.all().order_by('pk', 'create_date')
     return render(request, 'project.html', locals())
 
 
 def blog_grid(request):
-
     article = models.article.objects.all().order_by('-pk', 'create_date')  # -pk為降序 這邊說明為依照建立時間去排序
     current_url = request.path_info
     blog_grid_url = reverse('blog_grid')  # 顯示顏色的
@@ -115,7 +113,7 @@ def blog_grid(request):
     try:
         article = paginator.page(page)
     except PageNotAnInteger:
-        article= paginator.page(1)
+        article = paginator.page(1)
     except EmptyPage:
         article = paginator.page(paginator.num_pages)
 
@@ -127,7 +125,7 @@ def blog_sidebar(request):
 
     current_url = request.path_info
     blog_sidebar_url = reverse('blog_sidebar')  # 顯示顏色的
-    banners = banner.objects.filter(banner_category__banner_category='blog') # 挑選banner
+    banners = banner.objects.filter(banner_category__banner_category='blog')  # 挑選banner
     article_news_three = models.article.objects.all().order_by('-pk', 'create_date')[:3]  # -pk為降序 這邊說明為依照建立時間去排序 限制三筆
 
     limit = 4  # 每筆4則就文章分頁
@@ -137,7 +135,7 @@ def blog_sidebar(request):
     try:
         article = paginator.page(page)
     except PageNotAnInteger:
-        article= paginator.page(1)
+        article = paginator.page(1)
     except EmptyPage:
         article = paginator.page(paginator.num_pages)
 
@@ -151,7 +149,7 @@ def blog_single(request, article_id):
     next_article = models.article.objects.filter(pk__gt=article_id).order_by('pk').first()
     article_obj = get_object_or_404(article, pk=article_id)
     current_url = request.path_info
-    article_news_three = models.article.objects.all().order_by('-pk', 'create_date')[:3]        # -pk為降序 這邊說明為依照建立時間去排序 限制三筆
+    article_news_three = models.article.objects.all().order_by('-pk', 'create_date')[:3]  # -pk為降序 這邊說明為依照建立時間去排序 限制三筆
     banners = banner.objects.filter(banner_category__banner_category='blog')
     return render(request, 'blog-single.html', locals())
 
@@ -161,8 +159,4 @@ def contact(request):
     contact_url = reverse('contact')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='contact')
 
-
-
     return render(request, 'contact.html', locals())
-
-

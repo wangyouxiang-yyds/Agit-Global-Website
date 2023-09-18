@@ -26,3 +26,10 @@ class common_link(admin.ModelAdmin):
     list_display = ('link_title', 'link_href')
 
 admin.site.register(models.common_link, common_link)
+
+
+
+
+class marquee(admin.ModelAdmin):
+    list_display = ('announcement', 'modify_date', 'modify_user')
+admin.site.register(models.marquee, marquee)
