@@ -56,6 +56,7 @@ def index(request):
     banner_sec_part = banner.objects.filter(banner_category__banner_category='index_sec')  # 下滑第二個banner
     banner_third_part = banner.objects.filter(banner_category__banner_category='index_thir')  # 第三個banner
     article_news_three = models.article.objects.all().order_by('-pk', 'create_date')[:3]  # -pk為降序 這邊說明為依照建立時間去排序 限制三筆
+    announcement = models.marquee.objects.all()
 
     return render(request, 'index.html', locals())
 
@@ -160,3 +161,10 @@ def contact(request):
     banners = banner.objects.filter(banner_category__banner_category='contact')
 
     return render(request, 'contact.html', locals())
+
+
+def base(request):
+    announcement = models.marquee.objects.first()
+    context = {'announcement': announcement, 'display': display}
+
+    return render(request, 'base.html', context)

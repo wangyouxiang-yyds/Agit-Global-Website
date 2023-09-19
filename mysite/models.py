@@ -115,3 +115,5 @@ class marquee(models.Model):
     announcement = models.CharField("公告文字", max_length=100, null=False)  # 公告內容
     modify_date = models.DateTimeField("修改時間", auto_now=True)  # 修改時間
     modify_user = models.CharField("修改者", max_length=50, null=False)  # 修改者
+    def __str__(self):
+        return self.announcement
