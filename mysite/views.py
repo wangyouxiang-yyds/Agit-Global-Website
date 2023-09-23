@@ -66,7 +66,7 @@ def about(request):
     about_url = reverse('about')  # 顯示顏色的
     about_detail = models.manager.objects.all()
     banners = banner.objects.filter(banner_category__banner_category='about')
-
+    announcement = models.marquee.objects.all()
     return render(request, 'about.html', locals())
 
 
@@ -74,7 +74,7 @@ def pricing(request):
     current_url = request.path_info
     pricing_url = reverse('pricing')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='pricing')
-
+    announcement = models.marquee.objects.all()
     return render(request, 'pricing.html', locals())
 
 
@@ -90,6 +90,8 @@ def service(request):
         department_forms_by_category[category] = forms
 
     com_link = common_link.objects.all().order_by('-pk')
+
+    announcement = models.marquee.objects.all()
     return render(request, 'service.html', locals())
 
 
@@ -98,6 +100,8 @@ def project(request):
     project_url = reverse('project')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='project')  # 挑選banner
     award = models.project.objects.all().order_by('pk', 'create_date')
+
+    announcement = models.marquee.objects.all()
     return render(request, 'project.html', locals())
 
 
@@ -118,6 +122,9 @@ def blog_grid(request):
     except EmptyPage:
         article = paginator.page(paginator.num_pages)
 
+    announcement = models.marquee.objects.all()
+
+
     return render(request, 'blog-grid.html', locals())
 
 
@@ -132,7 +139,7 @@ def blog_sidebar(request):
     limit = 4  # 每筆4則就文章分頁
     page = request.GET.get('page', 1)
     paginator = Paginator(article, limit)
-
+    announcement = models.marquee.objects.all()
     try:
         article = paginator.page(page)
     except PageNotAnInteger:
@@ -152,6 +159,8 @@ def blog_single(request, article_id):
     current_url = request.path_info
     article_news_three = models.article.objects.all().order_by('-pk', 'create_date')[:3]  # -pk為降序 這邊說明為依照建立時間去排序 限制三筆
     banners = banner.objects.filter(banner_category__banner_category='blog')
+
+    announcement = models.marquee.objects.all()
     return render(request, 'blog-single.html', locals())
 
 
@@ -160,11 +169,7 @@ def contact(request):
     contact_url = reverse('contact')  # 顯示顏色的
     banners = banner.objects.filter(banner_category__banner_category='contact')
 
+    announcement = models.marquee.objects.all()
     return render(request, 'contact.html', locals())
 
 
-def base(request):
-    announcement = models.marquee.objects.first()
-    context = {'announcement': announcement, 'display': display}
-
-    return render(request, 'base.html', context)

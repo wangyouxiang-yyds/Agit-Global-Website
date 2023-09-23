@@ -155,14 +155,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 '''
-python manage.py collectstatic
+python manage.py collectstatic      這個東西會生成所有的樣式 包含admin後台帳號 要記得把資料夾拖到static不然後台會跑版
 最好是下面建立這些東西 你再跑上面這段代碼的時候才會成功而且你在templates那些畫面引用的{% static '/agitweb/plugins/bootstrap/bootstrap.min.css'%}
 才會生效
+
 '''
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/').replace('\\', '/')
 STATICFILES_DIRS = [
-    BASE_DIR / 'static/'
+    os.path.join(BASE_DIR, "static"),
 ]
 
 MEDIA_URL = '/media/'
