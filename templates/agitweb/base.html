@@ -142,14 +142,13 @@
                 </div>
             </div>
         </div>
-    {% if announcement %}
-    	<marquee class="container-fluid" bgcolor="white" hspace="30" scrollamount="20"
-                 style="font-family:標楷體; color: red; font-size: 60px">{{ announcement.first }}</marquee>
-    {% endif %}
-
 
 
     </div>
+    {% if announcement %}
+        <marquee class="container-fluid" bgcolor="white" hspace="30" scrollamount="20"
+                 style="font-family:微軟正黑體; color: black; font-size: 60px">{{ announcement.first }}</marquee>
+    {% endif %}
 </header>
 
 <!-- Header Close -->

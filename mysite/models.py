@@ -75,6 +75,8 @@ class banner(models.Model):
     banner_category = models.ForeignKey(banner_category, on_delete=models.CASCADE)  # foreign key
 
 
+
+
 class project(models.Model):
     project_photo = models.ImageField(upload_to='project_photo', max_length=255)  # 圖片
     big_title = models.CharField(max_length=50, null=False)  # 大標題

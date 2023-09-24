@@ -569,6 +569,8 @@ ul.dropdown-menu li {
   background-position: 10% 0%;
   padding: 200px 0;
   position: relative;
+
+  filter: brightness(1.8); /* 調整亮度，1.2 表示增加 20% 亮度 */
 }
 @media (max-width: 768px) {
   .slider {
